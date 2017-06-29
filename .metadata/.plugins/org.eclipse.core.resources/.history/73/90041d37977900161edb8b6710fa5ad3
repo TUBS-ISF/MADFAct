@@ -1,0 +1,78 @@
+package de.tu_bs.isf.madfa.test;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Set;
+
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmD;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmI;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmN;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmR;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmS;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmT;
+import de.tu_bs.isf.madfa.algorithms.implement.AlgorithmW;
+import de.tu_bs.isf.madfa.algorithms.skeleton.AlgorithmSPL;
+import de.tu_bs.isf.madfa.algorithms.skeleton.AlgorithmSPL.AlgorithmSelection;
+import de.tu_bs.isf.madfa.algorithms.skeleton.AlgorithmSkeleton;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_D;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_I;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_N;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_R;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_S;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_T;
+import de.tu_bs.isf.madfa.algorithms.spl.AlgorithmSPL_W;
+import de.tu_bs.isf.madfa.automaton.Automaton;
+import de.tu_bs.isf.madfa.benchmark.Benchmark;
+import de.tu_bs.isf.madfa.util.Util;
+
+/**
+ * Class to test the program
+ * @author Tobias
+ *
+ */
+public class TestClass {
+
+	/**
+	 * main method
+	 * @param args not used
+	 */
+	public static void main(String[] args) {
+
+//		Benchmark.benchmark();
+			
+		List<AlgorithmSelection> selectedAlgo = new ArrayList<>();
+		selectedAlgo.add(AlgorithmSelection.T);
+		selectedAlgo.add(AlgorithmSelection.N);
+		selectedAlgo.add(AlgorithmSelection.I);
+//		AlgorithmSkeleton algo = new AlgorithmSPL(selectedAlgo);
+		AlgorithmSkeleton algo = new AlgorithmSPL_I();
+		
+		String s = algo.getClass().getSimpleName();
+		Benchmark.addLineToBenchmarkFile(s);
+		List<String> words = new ArrayList<>();
+		
+//		words = Benchmark.readBible();
+		words = Benchmark.readEcoliSameLength(2950, 10);
+//		words = Benchmark.readEcoliDifferentLength(1);
+//		words = Util.orderWords(words);
+		words = Util.orderWordsMinLen(words);
+
+		long timeNano = System.nanoTime();
+		Automaton aut = algo.createMadfa(words);
+		System.out.println((System.nanoTime() - timeNano) / 1000000000 + " Sekunden");
+		
+		Benchmark.writeContentToFile();
+		Set<String> acceptedWords = Util.rightLanguageOfState(aut.getStartState());
+		
+		System.out.println("Size of input words: " + words.size());
+		System.out.println("States of automaton: " + aut.getStates().size());
+		System.out.println("Final states of automaton: " + aut.getFinalStates().size());
+		System.out.println("Transitions of automaton: " + aut.getTransitions().size());
+		System.out.println("Size of accepted words: " + acceptedWords.size());
+		System.out.println("Accepted word equivalent?: " + Util.wordSetsAreEquivalence(acceptedWords, words));
+		System.out.println("Is minimal?: " + Util.inequivalentStates(aut.getStates()));
+		
+		System.out.println("end");
+	}
+
+}

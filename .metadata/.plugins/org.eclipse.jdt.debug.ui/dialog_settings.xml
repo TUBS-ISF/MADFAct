@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="conditionHistory">
+		<item value="2" key="conditionHistoryEntryCount"/>
+		<item value="state.getId().equals(&quot;1994&quot;);" key="conditionHistoryEntry_0"/>
+		<item value="state.getId() == 1994" key="conditionHistoryEntry_1"/>
+	</section>
+</section>

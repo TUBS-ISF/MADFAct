@@ -1,0 +1,47 @@
+package de.tu_bs.isf.madfa.benchmark;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import de.tu_bs.isf.madfa.word.Word;
+
+public class Benchmark {
+
+	public static List<Word> readText() {
+		try {
+			FileReader fileReader = new FileReader("src/de/tu_bs/isf/madfa/benchmark/rand4.txt");
+			BufferedReader bufferedReader = new BufferedReader(fileReader);
+			Set<String> wordSet = new HashSet<>();
+			
+			String line = "";
+			while ((line = bufferedReader.readLine()) != null) {
+				line = line.toLowerCase();
+				String[] lineArray = line.split(" ");
+				for (String string : lineArray) {
+					wordSet.add(string);
+				}
+			}
+			bufferedReader.close();
+			List<Word> wordList = new ArrayList<>();
+			for (String word : wordSet) {
+				Word newWord = new Word(word);
+				wordList.add(newWord);
+			}
+			Collections.sort(wordList);
+			for(Word word : wordList) {
+				System.out.println(word);
+			}
+//			wordList.remove(0);
+			return wordList;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+}
