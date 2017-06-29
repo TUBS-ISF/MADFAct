@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring accessors="true" comment="Delete 2 elements from project &apos;de.tu_bs.isf.madfa&apos;&#x0D;&#x0A;- Original project: &apos;de.tu_bs.isf.madfa&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     de.tu-bs.cs.isf.taxonomy.graphiti_1.0.0.201705171135.jar&#x0D;&#x0A;     de.tu-bs.cs.isf.taxonomy.model_0.1.0.201705171135.jar" description="Delete elements" element1="de.tu-bs.cs.isf.taxonomy.model_0.1.0.201705171135.jar" element2="de.tu-bs.cs.isf.taxonomy.graphiti_1.0.0.201705171135.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="2" stamp="1495013866211" subPackages="false" version="1.0"/>
-</session>

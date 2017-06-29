@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Copy element &apos;words.txt&apos; to &apos;de.tu_bs.isf.madfa/src&apos;&#x0D;&#x0A;- Original project: &apos;de.tu_bs.isf.madfa&apos;&#x0D;&#x0A;- Destination element: &apos;de.tu_bs.isf.madfa/src&apos;&#x0D;&#x0A;- Original element: &apos;words.txt&apos;" description="Copy file" destination="/src" element1="src/de/tu_bs/isf/madfa/benchmark/words.txt" files="1" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1481552599045" units="0" version="1.0"/>
-</session>
